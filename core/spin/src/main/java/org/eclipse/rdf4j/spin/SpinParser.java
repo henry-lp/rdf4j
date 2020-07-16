@@ -355,7 +355,7 @@ public class SpinParser {
 				IRI type = typeIter.next();
 				if (isQueryElseTemplate == null && SPIN.TEMPLATES_CLASS.equals(type)) {
 					isQueryElseTemplate = Boolean.FALSE;
-				} else if ((isQueryElseTemplate == null || isQueryElseTemplate == Boolean.TRUE)
+				} else if ((isQueryElseTemplate == null || isQueryElseTemplate.equals(java.lang.Boolean.TRUE))
 						&& COMMAND_TYPES.contains(type)) {
 					isQueryElseTemplate = Boolean.TRUE;
 					possibleQueryTypes.add(type);

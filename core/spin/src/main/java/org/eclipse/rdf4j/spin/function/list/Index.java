@@ -41,6 +41,9 @@ public class Index implements TupleFunction {
 
 					@Override
 					public List<Value> next() {
+				if (!hasNext()) {
+					throw new java.util.NoSuchElementException();
+				}
 						return Arrays.asList(valueFactory.createLiteral(pos), args[pos++]);
 					}
 

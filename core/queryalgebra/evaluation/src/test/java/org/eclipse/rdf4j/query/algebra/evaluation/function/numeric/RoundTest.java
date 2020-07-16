@@ -78,7 +78,7 @@ public class RoundTest {
 	@Test
 	public void testEvaluateBigDecimal() {
 		try {
-			BigDecimal bd = new BigDecimal(1234567.567);
+			BigDecimal bd = BigDecimal.valueOf(1234567.567);
 
 			Literal rounded = round.evaluate(f, f.createLiteral(bd.toPlainString(), XMLSchema.DECIMAL));
 

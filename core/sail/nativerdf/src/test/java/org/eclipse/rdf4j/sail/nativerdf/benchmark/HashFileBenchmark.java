@@ -146,7 +146,7 @@ public class HashFileBenchmark {
 	@Benchmark
 	public long readHighMissCount() throws IOException {
 
-		Random random = new Random(RANDOM_SEED + 21483);
+		Random random = new Random((long) org.eclipse.rdf4j.sail.nativerdf.benchmark.HashFileBenchmark.RANDOM_SEED + 21483);
 
 		long count = 0;
 		for (int i = 0; i < COUNT; i++) {

@@ -393,7 +393,7 @@ class ElasticsearchDataStructure implements DataStructureInterface {
 					}
 
 					try {
-						Thread.sleep(failures * 100);
+						Thread.sleep((long) failures * 100);
 					} catch (InterruptedException ignored) {
 					}
 

@@ -43,7 +43,7 @@ public abstract class SailConcurrencyTest {
 
 	private static final int MAX_STATEMENT_IDX = 1000;
 
-	private static final long MAX_TEST_TIME = 30 * 1000;
+	private static final long MAX_TEST_TIME = (long) 30 * 1000;
 
 	/*-----------*
 	 * Variables *

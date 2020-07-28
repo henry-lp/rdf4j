@@ -90,7 +90,7 @@ public class MediumConcurrencyTest extends SPARQLBaseTest {
 			executor.submit(() -> {
 				p1.register();
 				try {
-					Thread.sleep(rand.nextInt(10) * 1000);
+					Thread.sleep((long) rand.nextInt(10) * 1000);
 				} catch (InterruptedException e) {
 					throw new RuntimeException(e);
 				}

@@ -39,7 +39,7 @@ public class DataFile implements Closeable {
 	 */
 	private static final byte FILE_FORMAT_VERSION = 1;
 
-	private static final long HEADER_LENGTH = MAGIC_NUMBER.length + 1;
+	private static final long HEADER_LENGTH = (long) org.eclipse.rdf4j.sail.nativerdf.datastore.DataFile.MAGIC_NUMBER.length + 1;
 
 	/*-----------*
 	 * Variables *

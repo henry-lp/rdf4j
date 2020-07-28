@@ -28,14 +28,13 @@ public class BinaryHandlingTest extends AbstractParserHandlingTest {
 	@Override
 	protected InputStream getRDFLangStringWithNoLanguageStream(Model model) throws Exception {
 		String fileName = "src/test/resources/testcases/binary/binary-RDF-langString-no-language-test.rdf";
-		InputStream file = new FileInputStream(fileName);
-		long fileSize = new File(fileName).length();
-		byte[] byteArray = new byte[(int) fileSize];
-
-		file.read(byteArray);
-
-		InputStream RDFLangStringWithNoLanguageStatements = new ByteArrayInputStream(byteArray);
-		return RDFLangStringWithNoLanguageStatements;
+		try (java.io.InputStream file = new java.io.FileInputStream(fileName)) {
+			long fileSize = new java.io.File(fileName).length();
+			byte[] byteArray = new byte[((int) (fileSize))];
+			file.read(byteArray);
+			java.io.InputStream RDFLangStringWithNoLanguageStatements = new java.io.ByteArrayInputStream(byteArray);
+			return RDFLangStringWithNoLanguageStatements;
+		}
 	}
 
 	@Override

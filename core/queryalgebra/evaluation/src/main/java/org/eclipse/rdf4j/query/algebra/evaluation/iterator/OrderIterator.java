@@ -276,14 +276,15 @@ public class OrderIterator extends DelayedIteration<BindingSet, QueryEvaluationE
 		try {
 			while (iter.hasNext()) {
 				if (list.size() >= syncThreshold && list.size() < limit) {
-					SerializedQueue<BindingSet> queue = new SerializedQueue<>("orderiter");
-					sort(list).forEach(bs -> queue.add(bs));
-					serialized.add(queue);
-					decrement(list.size() - queue.size());
-					list = new ArrayList<>(list.size());
-					if (threshold == null && serialized.stream().mapToLong(q -> q.size()).sum() >= limit) {
-						Stream<BindingSet> stream = serialized.stream().map(q -> q.peekLast());
-						threshold = stream.sorted(comparator).skip(serialized.size() - 1).findFirst().get();
+					try (org.eclipse.rdf4j.query.algebra.evaluation.iterator.OrderIterator.SerializedQueue<org.eclipse.rdf4j.query.BindingSet> queue = new org.eclipse.rdf4j.query.algebra.evaluation.iterator.OrderIterator.SerializedQueue<>("orderiter")) {
+						sort(list).forEach(( bs) -> queue.add(bs));
+						serialized.add(queue);
+						decrement(list.size() - queue.size());
+						list = new java.util.ArrayList<>(list.size());
+						if ((threshold == null) && (serialized.stream().mapToLong(( q) -> q.size()).sum() >= limit)) {
+							java.util.stream.Stream<org.eclipse.rdf4j.query.BindingSet> stream = serialized.stream().map(( q) -> q.peekLast());
+							threshold = stream.sorted(comparator).skip(serialized.size() - 1).findFirst().get();
+						}
 					}
 				} else if (list.size() >= limit2 || !distinct && threshold == null && list.size() >= limit) {
 					List<BindingSet> sorted = new ArrayList<>(limit2);

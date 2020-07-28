@@ -51,9 +51,10 @@ public class DeleteServlet extends TransformationServlet {
 			// Respond to 'checkSafe' XmlHttpRequest with JSON.
 			ObjectNode jsonObject = mapper.createObjectNode();
 			jsonObject.put("safe", manager.isSafeToRemove(checkSafe));
-			final PrintWriter writer = new PrintWriter(new BufferedWriter(resp.getWriter()));
-			writer.write(mapper.writeValueAsString(jsonObject));
-			writer.flush();
+			try (final java.io.PrintWriter writer = new java.io.PrintWriter(new java.io.BufferedWriter(resp.getWriter()))) {
+				writer.write(org.eclipse.rdf4j.workbench.commands.DeleteServlet.mapper.writeValueAsString(jsonObject));
+				writer.flush();
+			}
 		}
 
 	}

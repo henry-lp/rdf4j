@@ -172,11 +172,12 @@ public class QueryServlet extends TransformationServlet {
 		if ("get".equals(req.getParameter("action"))) {
 			ObjectNode jsonObject = mapper.createObjectNode();
 			jsonObject.put("queryText", getQueryText(req));
-			PrintWriter writer = new PrintWriter(new BufferedWriter(resp.getWriter()));
-			try {
-				writer.write(mapper.writeValueAsString(jsonObject));
-			} finally {
-				writer.flush();
+			try (java.io.PrintWriter writer = new java.io.PrintWriter(new java.io.BufferedWriter(resp.getWriter()))) {
+				try {
+					writer.write(org.eclipse.rdf4j.workbench.commands.QueryServlet.mapper.writeValueAsString(jsonObject));
+				} finally {
+					writer.flush();
+				}
 			}
 		} else {
 			handleStandardBrowserRequest(req, resp, xslPath);
@@ -269,9 +270,10 @@ public class QueryServlet extends TransformationServlet {
 			}
 			jsonObject.put("written", written);
 		}
-		final PrintWriter writer = new PrintWriter(new BufferedWriter(resp.getWriter()));
-		writer.write(mapper.writeValueAsString(jsonObject));
-		writer.flush();
+		try (final java.io.PrintWriter writer = new java.io.PrintWriter(new java.io.BufferedWriter(resp.getWriter()))) {
+			writer.write(org.eclipse.rdf4j.workbench.commands.QueryServlet.mapper.writeValueAsString(jsonObject));
+			writer.flush();
+		}
 	}
 
 	private String getUserNameFromParameter(WorkbenchRequest req, String parameter) {

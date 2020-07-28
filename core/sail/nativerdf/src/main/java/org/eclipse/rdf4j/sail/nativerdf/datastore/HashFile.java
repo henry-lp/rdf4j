@@ -314,12 +314,11 @@ public class HashFile implements Closeable {
 				throw new IOException("Failed to create file " + file);
 			}
 		}
-
-		// Open the file in read-write mode and make sure the file is empty
-		RandomAccessFile raf = new RandomAccessFile(file, "rw");
-		raf.setLength(0L);
-
-		return raf;
+		try (// Open the file in read-write mode and make sure the file is empty
+		java.io.RandomAccessFile raf = new java.io.RandomAccessFile(file, "rw")) {
+			raf.setLength(0L);
+			return raf;
+		}
 	}
 
 	/**

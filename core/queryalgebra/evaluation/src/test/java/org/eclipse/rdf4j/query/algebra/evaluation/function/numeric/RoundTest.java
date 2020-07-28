@@ -78,13 +78,13 @@ public class RoundTest {
 	@Test
 	public void testEvaluateBigDecimal() {
 		try {
-			BigDecimal bd = new BigDecimal(1234567.567);
+			BigDecimal bd = BigDecimal.valueOf(1234567.567);
 
 			Literal rounded = round.evaluate(f, f.createLiteral(bd.toPlainString(), XMLSchema.DECIMAL));
 
 			BigDecimal roundValue = rounded.decimalValue();
 
-			assertEquals(new BigDecimal(1234568.0), roundValue);
+			org.junit.Assert.assertEquals(BigDecimal.valueOf(1234568.0), roundValue);
 		} catch (ValueExprEvaluationException e) {
 			e.printStackTrace();
 			fail(e.getMessage());

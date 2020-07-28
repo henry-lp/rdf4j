@@ -109,13 +109,13 @@ public class MathUtil {
 
 				switch (op) {
 				case PLUS:
-					return vf.createLiteral(left + right);
+					return vf.createLiteral((double) left + (double) right );
 				case MINUS:
-					return vf.createLiteral(left - right);
+					return vf.createLiteral((double) left - (double) right );
 				case MULTIPLY:
-					return vf.createLiteral(left * right);
+					return vf.createLiteral((double) left * (double) right );
 				case DIVIDE:
-					return vf.createLiteral(left / right);
+					return vf.createLiteral((double) left / (double) right );
 				default:
 					throw new IllegalArgumentException("Unknown operator: " + op);
 				}
@@ -190,4 +190,4 @@ public class MathUtil {
 		MathUtil.decimalExpansionScale = decimalExpansionScale;
 	}
 
-}
+	}

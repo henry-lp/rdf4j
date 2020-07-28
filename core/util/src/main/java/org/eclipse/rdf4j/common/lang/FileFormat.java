@@ -163,7 +163,7 @@ public class FileFormat {
 			if (mt.equalsIgnoreCase(mimeType)) {
 				return true;
 			}
-			if (mimeType != type && mt.equalsIgnoreCase(type)) {
+			if (!mimeType.equals(type) && mt.equalsIgnoreCase(type)) {
 				return true;
 			}
 		}

@@ -355,11 +355,11 @@ public class SpinParser {
 				IRI type = typeIter.next();
 				if (isQueryElseTemplate == null && SPIN.TEMPLATES_CLASS.equals(type)) {
 					isQueryElseTemplate = Boolean.FALSE;
-				} else if ((isQueryElseTemplate == null || isQueryElseTemplate == Boolean.TRUE)
+				} else if ((isQueryElseTemplate == null || isQueryElseTemplate.equals(java.lang.Boolean.TRUE))
 						&& COMMAND_TYPES.contains(type)) {
 					isQueryElseTemplate = Boolean.TRUE;
 					possibleQueryTypes.add(type);
-				} else if ((isQueryElseTemplate == null || isQueryElseTemplate == Boolean.FALSE)
+				} else if ((isQueryElseTemplate == null || isQueryElseTemplate.equals(java.lang.Boolean.FALSE))
 						&& !NON_TEMPLATES.contains(type)) {
 					possibleTemplates.add(type);
 				}
@@ -369,7 +369,7 @@ public class SpinParser {
 		ParsedOperation parsedOp;
 		if (isQueryElseTemplate == null) {
 			throw new MalformedSpinException(String.format("Missing RDF type: %s", queryResource));
-		} else if (isQueryElseTemplate == Boolean.TRUE) {
+		} else if (isQueryElseTemplate.equals(java.lang.Boolean.TRUE)) {
 			// command (query or update)
 			if (possibleQueryTypes.size() > 1) {
 				throw new MalformedSpinException(

@@ -126,6 +126,9 @@ public class OrderIterator extends DelayedIteration<BindingSet, QueryEvaluationE
 
 				@Override
 				public E next() {
+					if (!hasNext()) {
+						throw new java.util.NoSuchElementException();
+					}
 					return poll();
 				}
 			};
@@ -181,6 +184,9 @@ public class OrderIterator extends DelayedIteration<BindingSet, QueryEvaluationE
 
 		@Override
 		public E next() {
+			if (!hasNext()) {
+				throw new java.util.NoSuchElementException();
+			}
 			if (next != null) {
 				try {
 					return next;

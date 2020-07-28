@@ -54,6 +54,9 @@ public class For implements InverseMagicProperty {
 
 					@Override
 					public Value next() {
+				if (!hasNext()) {
+					throw new java.util.NoSuchElementException();
+				}
 						return valueFactory.createLiteral(value++);
 					}
 

@@ -135,6 +135,9 @@ public class ListBindingSet extends AbstractBindingSet {
 
 		@Override
 		public Binding next() {
+			if (!hasNext()) {
+				throw new java.util.NoSuchElementException();
+			}
 			Binding result = new SimpleBinding(bindingNames.get(index), values.get(index));
 			findNextElement();
 			return result;

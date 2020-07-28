@@ -33,6 +33,9 @@ public class CodePointIterator implements Iterator<Integer> {
 
 	@Override
 	public Integer next() {
+		if (!hasNext()) {
+			throw new java.util.NoSuchElementException();
+		}
 		int codePoint = source.codePointAt(index);
 		index += Character.charCount(codePoint);
 		return codePoint;

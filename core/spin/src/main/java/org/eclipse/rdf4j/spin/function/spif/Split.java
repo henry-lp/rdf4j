@@ -55,6 +55,9 @@ public class Split implements InverseMagicProperty {
 
 					@Override
 					public Value next() {
+				if (!hasNext()) {
+					throw new java.util.NoSuchElementException();
+				}
 						return valueFactory.createLiteral(parts[pos++]);
 					}
 

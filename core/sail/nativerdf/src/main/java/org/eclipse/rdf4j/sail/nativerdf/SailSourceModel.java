@@ -69,6 +69,9 @@ class SailSourceModel extends AbstractModel {
 
 		@Override
 		public Statement next() {
+			if (!hasNext()) {
+				throw new java.util.NoSuchElementException();
+			}
 			try {
 				last = stmts.next();
 				if (last == null) {

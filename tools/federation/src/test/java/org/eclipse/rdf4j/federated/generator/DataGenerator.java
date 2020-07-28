@@ -212,10 +212,11 @@ public class DataGenerator {
 	}
 
 	private void write(StringBuilder sb, String file) throws IOException {
-		FileWriter fw = new FileWriter(new File(file));
-		fw.write(sb.toString());
-		fw.flush();
-		fw.close();
+		try (java.io.FileWriter fw = new java.io.FileWriter(new java.io.File(file))) {
+			fw.write(sb.toString());
+			fw.flush();
+			fw.close();
+		}
 	}
 
 	private void appendLine(StringBuilder sb, String line) {

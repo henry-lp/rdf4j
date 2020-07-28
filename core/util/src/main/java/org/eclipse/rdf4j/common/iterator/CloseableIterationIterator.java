@@ -40,6 +40,9 @@ public class CloseableIterationIterator<E> implements Iterator<E>, Closeable {
 
 	@Override
 	public E next() {
+		if (!hasNext()) {
+			throw new java.util.NoSuchElementException();
+		}
 		return iteration.next();
 	}
 

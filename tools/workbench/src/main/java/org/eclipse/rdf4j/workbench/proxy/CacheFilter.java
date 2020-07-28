@@ -40,7 +40,7 @@ public class CacheFilter implements Filter {
 	 *
 	 * @see <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616: HTTP/1.1</a>
 	 */
-	public final static long MAX_EXPIRY = (365 * 24 + 6) * 60 * 60;
+	public final static long MAX_EXPIRY = ((((long) 365 * 24) + 6) * 60) * 60;
 
 	/**
 	 * Minimum allowed expiry lifetime, zero, which corresponds to not caching at all.

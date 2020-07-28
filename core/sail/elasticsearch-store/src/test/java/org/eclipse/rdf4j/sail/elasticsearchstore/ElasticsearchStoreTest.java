@@ -263,12 +263,12 @@ public class ElasticsearchStoreTest {
 		for (int i = 0; i < 100 && !clientProvider.isClosed(); i++) {
 			System.gc();
 			try {
-				Thread.sleep(i * 100);
+				Thread.sleep((long) i * 100);
 			} catch (InterruptedException ignored) {
 			}
 		}
 
-		assertTrue(clientProvider.isClosed());
+		org.junit.Assert.assertTrue(clientProvider.isClosed());
 
 	}
 

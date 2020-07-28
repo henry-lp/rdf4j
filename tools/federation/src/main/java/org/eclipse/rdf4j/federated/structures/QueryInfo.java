@@ -83,7 +83,7 @@ public class QueryInfo {
 
 		int _maxExecutionTime = maxExecutionTime <= 0 ? federationContext.getConfig().getEnforceMaxQueryTime()
 				: maxExecutionTime;
-		this.maxExecutionTimeMs = _maxExecutionTime * 1000;
+		this.maxExecutionTimeMs = (long) _maxExecutionTime * 1000;
 		this.includeInferred = includeInferred;
 		this.start = System.currentTimeMillis();
 	}
